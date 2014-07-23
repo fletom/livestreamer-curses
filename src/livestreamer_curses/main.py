@@ -173,7 +173,10 @@ class StreamList(object):
         try:
             f = shelve.open(filename, 'c')
         except Exception:
-            raise ShelveError('Database could not be opened, another livestreamer-curses instance might be already running.')
+            raise ShelveError(
+                'Database could not be opened, another livestreamer-curses instance might be already running. '
+                'Please note that a database created with Python 2.x cannot be used with Python 3.x and vice versa.'
+            )
         self.max_id = 0
 
         # Sort streams by view count
